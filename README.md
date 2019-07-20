@@ -1,7 +1,3 @@
----
-typora-root-url: doc\assets
----
-
 # Crack inspection processing pipeline
 
 **Abstract** : prototype implementation of a modular pipeline to localize, detect, and classify cracks in video footage for later SQL querying using motion estimation, convolutional neural networks (CNN) and relational/spatial databases. This is an attempt to reproduce the paper *Deep Learning-based Crack Detection Using Convolutional Neural Network and Naıve Bayes Data Fusion.* [1], but the approach is of interest for similar problems.
@@ -9,8 +5,6 @@ typora-root-url: doc\assets
 **Languages and tools:** Python, Tensorflow, Keras, OpenCV, SQLite.
 
 <video controls src="doc/assets/output_frame_0.avi" />
-
-[TOC]
 
 ## Introduction
 
@@ -28,7 +22,7 @@ A special application for inspection of cracks in a nuclear plant [1] is impleme
 
 In a typical scenario, video footage may be obtained from a camera carried on a robot or a moving arm. This is the case in a CCTV system for wall inspection in the tank of a nuclear plant, a drone flying over a region to perform a landmark use survey, or a small arm inspecting a PCB to detect manufacture flaws.
 
-![solution-overview](/solution-overview.png)
+![solution-overview](doc/assets/solution-overview.png)
 
 This framework provides reusable components common to many image and video processing applications in order to ease the definition of processing pipelines. The collective maintenance and development of these components with a standardized decoupled interface could be beneficial for a people working in different projects that share the need of a processing chain.
 
@@ -89,7 +83,7 @@ Tubelet and cluster tables are populated after patches for all frames are proces
 
 #### Database relational model
 
-![crack-cnn-schema](spr-schema.png)
+![crack-cnn-schema](doc/assets/spr-schema.png)
 
 Notes:
 
@@ -119,7 +113,7 @@ TODO:
 
 ##### Stage 1 -Patch Classification
 
-![nuclear-plant-crack-inspection-pipeline-1](/nuclear-plant-crack-inspection-pipeline-1.png)
+![nuclear-plant-crack-inspection-pipeline-1](doc/assets/nuclear-plant-crack-inspection-pipeline-1.png)
 
 ##### Stage 2 - Spatio Temporal Clustering and Naive Bayes decision making
 
@@ -151,7 +145,9 @@ $$
  } \ge \theta
 $$
 
-How to choose theta ? TODO:
+How to choose theta ? 
+
+TODO:
 
 - Export ground truth table generated from human analysis and use this table to find threshold value as described in [1].
 
@@ -182,7 +178,7 @@ python img2panvideo.py --input "grieta.jpg" --width 400 --height 400 --scan_spee
 
 GUI application to visualize detections in video footage.
 
-![crackinspector-gui](/crackinspector-gui.png)
+![crackinspector-gui](doc/assets/crackinspector-gui.png)
 
 TODO:
 
