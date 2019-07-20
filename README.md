@@ -17,7 +17,6 @@ This work attempts to provide a library of reusable components for fast prototyp
 A special application for inspection of cracks in a nuclear plant [1] is implemented to guide the design and test the applicability of the solution.
 
 
-
 ### Workflow
 
 In a typical scenario, video footage may be obtained from a camera carried on a robot or a moving arm. This is the case in a CCTV system for wall inspection in the tank of a nuclear plant, a drone flying over a region to perform a landmark use survey, or a small arm inspecting a PCB to detect manufacture flaws.
@@ -137,13 +136,13 @@ This approach is easy to implement but has the caveat that clusters are defined 
 A region is classified as having a crack for a selection threshold if the following relation is satisfied:
 
 
-$$
+\begin{equation}
 {
 	\log \sum{ P(C_{crck}|s_1,..,s_n}  )
  	\over  
  	\log(\sum{ P(C_{ncrck}|s_1,..,s_n} )
  } \ge \theta
-$$
+\end{equation}
 
 How to choose theta ? 
 
