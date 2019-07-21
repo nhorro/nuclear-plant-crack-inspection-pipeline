@@ -67,11 +67,13 @@ Note:
 
 - WIP: OpenCV Block Matching / OpenCV Optical Flow 
 
+See [video motion estimation](./src/notebooks/VideoMotionEstimation/VideoMotionEstimatorTest.ipynb).
+
 ### CNNDetector models
 
 Each CNN detector takes an input RGB encoded image and outputs the probability of that image matching a known class. Output classes are defined on training and depend on the training dataset.
 
-See [models for crack classification](https://github.com/nhorro/tensorflow-crack-classification)
+See [models for crack classification](https://github.com/nhorro/tensorflow-crack-classification).
 
 ### SQLiteSpatioTemporalRegister
 
@@ -91,6 +93,7 @@ Notes:
 
 - crack_prob and no_crack_prob may be generalized to "class1_prob", "class2_prob", etc.
 
+See [spatio temporal register](./src/notebooks/SpatioTemporalRegister/SpatioTemporalRegisterTest.ipynb).
 
 ### Pre-built pipelines
 
@@ -204,7 +207,7 @@ TODO:
 - Step 2. For example, to execute 'wall-scan-example' with docker [custom-tensorflow1.12-py3-jupyter-opencv](tensorflow1.12-py3-jupyter-opencv):
 
 ```bash
-docker run -it --rm --runtime=nvidia -v $(realpath $PWD):/tf/notebooks --name tensorflowdev1 --network="host" -p 8888:8888 custom-tensorflow1.12-py3-jupyter-opencv bash
+docker run -it --rm --runtime=nvidia -v $(realpath $PWD):/tf/notebooks --name tensorflowdev1 --network="host" -p 8888:8888 nhorro/tensorflow1.12-py3-jupyter-opencv:1.1.0 bash
 cd /tf/notebooks/src/pipelines/crackcnn
 python crackcnnpipeline.py --jobs=jobs.json --name=wall-scan-example
 ```
