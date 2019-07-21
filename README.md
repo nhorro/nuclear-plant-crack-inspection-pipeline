@@ -16,7 +16,6 @@ This work attempts to provide a library of reusable components for fast prototyp
 
 A special application for inspection of cracks in a nuclear plant [1] is implemented to guide the design and test the applicability of the solution.
 
-
 ### Workflow
 
 In a typical scenario, video footage may be obtained from a camera carried on a robot or a moving arm. This is the case in a CCTV system for wall inspection in the tank of a nuclear plant, a drone flying over a region to perform a landmark use survey, or a small arm inspecting a PCB to detect manufacture flaws.
@@ -214,6 +213,6 @@ python crackcnnpipeline.py --jobs=jobs.json --name=wall-scan-example
 
 ## References
 
-- *Deep Learning-based Crack Detection Using Convolutional Neural Network and Naıve Bayes Data Fusion.* 
-- Özgenel, Çağlar Fırat (2018), “Concrete Crack Images for Classification”, Mendeley Data, v1http://dx.doi.org/10.17632/5y9wdsg2zt.1
+- [1] Chen, Fu-Chen & Jahanshahi, Mohammad. (2017). NB-CNN: Deep Learning-based Crack Detection Using Convolutional Neural Network and Naïve Bayes Data Fusion. IEEE Transactions on Industrial Electronics. PP. 1-1. 10.1109/TIE.2017.2764844.
+- [2] Özgenel, Çağlar Fırat (2018), “Concrete Crack Images for Classification”, Mendeley Data, v1http://dx.doi.org/10.17632/5y9wdsg2zt.1
 
