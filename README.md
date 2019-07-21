@@ -131,7 +131,6 @@ This approach is easy to implement but has the caveat that clusters are defined 
 
 A region is classified as having a crack for a selection threshold if the following relation is satisfied:
 
-
 \begin{equation}
 {
 	\log \sum{ P(C_{crck}|s_1,..,s_n}  )
@@ -180,7 +179,6 @@ TODO:
 - Mechanism to input corrections on patch predictions and store in DB to train NB, retrain CNN Detector.
 
 
-
 ## Command line recipes
 
 ### Run the crack-pipeline
@@ -203,7 +201,7 @@ TODO:
 }
 ``` 
 
-- Step 2. For example, to execute 'wall-scan-slow' with docker [custom-tensorflow1.12-py3-jupyter-opencv](tensorflow1.12-py3-jupyter-opencv):
+- Step 2. For example, to execute 'wall-scan-example' with docker [custom-tensorflow1.12-py3-jupyter-opencv](tensorflow1.12-py3-jupyter-opencv):
 
 ```bash
 docker run -it --rm --runtime=nvidia -v $(realpath $PWD):/tf/notebooks --name tensorflowdev1 --network="host" -p 8888:8888 custom-tensorflow1.12-py3-jupyter-opencv bash
