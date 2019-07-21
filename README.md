@@ -4,7 +4,7 @@
 
 **Languages and tools:** Python, Tensorflow, Keras, OpenCV, SQLite.
 
-<video controls src="doc/assets/output_frame_0.avi"/>
+<img src="doc/assets/output_frame_0.gif"/>
 
 ## Introduction
 
