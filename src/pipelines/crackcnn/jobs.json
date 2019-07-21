@@ -1,10 +1,10 @@
 {
 	"jobs": {
-		"wall-scan-slow": {
-			"input_video": "../../../products/wall-scans/wall-scan-slow.avi",
+		"wall-scan-example": {
+			"input_video": "../../../data/footage/wall-scan.avi",
 			"start_frame": 0,
 			"limit": 0,
-			"checkpoint_model": "../../../checkpoints/simplenet-cracks/simplenet_cracks_weights.29-0.01.hdf5",
+			"checkpoint_model": "../../../model-checkpoints/febrero-cpu-friendly_weights.27-0.01.hdf5",
 			"stride": 16,
 			"patch_size": 64,
 			"spr_output_filename": "../../../products/spr/{name}_{checkpoint_model}_{date}.db"

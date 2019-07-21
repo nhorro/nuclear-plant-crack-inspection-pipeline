@@ -1,13 +1,9 @@
-from IPython.display import SVG
 from scipy import signal
 import csv
 import numpy
 import cv2
 import matplotlib.pyplot as plt
-from keras.models import load_model
-from keras.utils import plot_model
-from keras.utils.vis_utils import model_to_dot
-from keras.preprocessing import image
+from tensorflow.keras.models import load_model
 import numpy as np
 import sqlite3 as sqlite
 import sys
@@ -25,10 +21,6 @@ class CNNDetector:
         self.model = load_model(checkpoint_file)        
         self.n_classes = n_classes # TODO: ver si hace falta
         
-    def show_model_info(self):
-        plot_model(self.model, show_shapes=True)
-        self.model.summary()
-        return SVG(model_to_dot(self.model).create(prog='dot', format='svg'))
         
     def scan_image_file(self, filename):        
         img = cv2.imread(filename)

@@ -4,7 +4,7 @@
 
 **Languages and tools:** Python, Tensorflow, Keras, OpenCV, SQLite.
 
-<video controls src="doc/assets/output_frame_0.avi" />
+<video controls src="doc/assets/output_frame_0.avi"/>
 
 ## Introduction
 
@@ -92,19 +92,16 @@ Notes:
 
 - crack_prob and no_crack_prob may be generalized to "class1_prob", "class2_prob", etc.
 
-  
 
 ### Pre-built pipelines
 
 | Pipeline  | Description                                                  |
 | --------- | ------------------------------------------------------------ |
-| crack-cnn | Detect cracks in surfaces such as walls. Inspired in [NB-CNN] for crack inspection surfaces of nuclear tanks. |
+| crackcnn  | Detect cracks in surfaces such as walls. Inspired in [NB-CNN] for crack inspection surfaces of nuclear tanks. |
 
-#### pipeline for crack inspection in nuclear plant
+#### crackcnn - pipeline for crack inspection in nuclear plant
 
 This pipeline attempts to reproduce [1]. 
-
-The pipeline is independent of the the motion estimation algorithm and model used in the CNNDetector. 
 
 TODO:
 
@@ -144,10 +141,10 @@ A region is classified as having a crack for a selection threshold if the follow
  } \ge \theta
 \end{equation}
 
-How to choose theta ? 
+TODO: 
 
-TODO:
-
+- implement all decision making conditions from paper
+- how to choose theta ? 
 - Export ground truth table generated from human analysis and use this table to find threshold value as described in [1].
 
 ## Additional tools
@@ -189,29 +186,30 @@ TODO:
 
 ### Run the crack-pipeline
 
-- Step 1. Edit jobs.json:
+- Step 1. Edit jobs.json. For example to process 'wall-scan-example':
 
 ```json
 {
 	"jobs": {
-		"wall-scan-slow": {
-			"input_video": "../../../products/wall-scans/wall-scan-slow.avi",
+		"wall-scan-example": {
+			"input_video": "../../../data/footage/wall-scan.avi",
 			"start_frame": 0,
 			"limit": 0,
-			"checkpoint_model": "../../../checkpoints/simplenet-cracks/simplenet_cracks_weights.29-0.01.hdf5",
+			"checkpoint_model": "../../../model-checkpoints/febrero-cpu-friendly_weights.27-0.01.hdf5",
 			"stride": 16,
 			"patch_size": 64,
 			"spr_output_filename": "../../../products/spr/{name}_{checkpoint_model}_{date}.db"
 		}
 	}
 }
-```
+``` 
 
-- Step 2. For example, to execute train job 'wall-scan-slow':
+- Step 2. For example, to execute 'wall-scan-slow' with docker [custom-tensorflow1.12-py3-jupyter-opencv](tensorflow1.12-py3-jupyter-opencv):
 
 ```bash
-cd code/pipelines
-python crackcnnpipeline.py --jobs=jobs.json --name=wall-scan-slow
+docker run -it --rm --runtime=nvidia -v $(realpath $PWD):/tf/notebooks --name tensorflowdev1 --network="host" -p 8888:8888 custom-tensorflow1.12-py3-jupyter-opencv bash
+cd /tf/notebooks/src/pipelines/crackcnn
+python crackcnnpipeline.py --jobs=jobs.json --name=wall-scan-example
 ```
 
 ## References

@@ -1,15 +1,9 @@
-from IPython.display import SVG
+
 from scipy import signal
-import csv
 import numpy
 import cv2
 import matplotlib.pyplot as plt
-from keras.models import load_model
-from keras.utils import plot_model
-from keras.utils.vis_utils import model_to_dot
-from keras.preprocessing import image
 import numpy as np
-import sqlite3 as sqlite
 import sys
 
 class VideoMotionEstimator:
