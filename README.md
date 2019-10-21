@@ -207,7 +207,7 @@ TODO:
 - Step 2. For example, to execute 'wall-scan-example' with docker [custom-tensorflow1.12-py3-jupyter-opencv](tensorflow1.12-py3-jupyter-opencv):
 
 ```bash
-docker run -it --rm --runtime=nvidia -v $(realpath $PWD):/tf/notebooks --name tensorflowdev1 --network="host" -p 8888:8888 nhorro/tensorflow1.12-py3-jupyter-opencv:1.1.0 bash
+docker run -it --rm --runtime=nvidia -v $(realpath $PWD):/tf/notebooks --name tensorflowdev1 --network="host" -p 8888:8888 nhorro/tensorflow1.12-py3-jupyter-opencv bash
 cd /tf/notebooks/src/pipelines/crackcnn
 python crackcnnpipeline.py --jobs=jobs.json --name=wall-scan-example
 ```
