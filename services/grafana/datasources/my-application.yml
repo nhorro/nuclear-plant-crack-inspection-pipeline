@@ -1,0 +1,10 @@
+apiVersion: 1
+
+datasources:
+  - name: my-application-ds
+    type: influxdb
+    access: proxy
+    database: my_application
+    url: http://influxdb:8086
+    isDefault: true
+    editable: false

@@ -1,0 +1,5 @@
+FROM influxdb:1.7-alpine
+
+ENV INFLUXDB_REPORTING_DISABLED false
+ENV INFLUXDB_LOGGING_LEVEL info
+ENV INFLUXDB_DB my_application

@@ -1,0 +1,81 @@
+version: '3.7'
+
+services:
+    elasticsearch:
+        network_mode: host
+        build:
+            context: ./elasticsearch
+        volumes:
+            - type: volume
+              source: elasticsearch.data
+              target: /usr/share/elasticsearch/data
+            - type: volume
+              source: elasticsearch.logs
+              target: /usr/share/elasticsearch/logs
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+
+    kibana:
+        network_mode: host
+        depends_on:
+            - elasticsearch
+        image: kibana:7.2.0
+        ports:
+            - target: 5601
+              published: 5601
+              protocol: tcp
+        volumes:
+            - type: volume
+              source: kibana.data
+              target: /usr/share/kibana/data
+        environment:
+            SERVER_NAME: kibana
+            ELASTICSEARCH_HOSTS: http://localhost:9200
+
+    influxdb:
+      network_mode: host
+      build:
+          context: ./influxdb
+      volumes:
+           - type: volume
+             source: influxdb.data
+             target: /var/lib/influxdb
+      ports:
+           - "8086:8086/tcp"
+
+    grafana:
+        network_mode: host
+        build:
+            context: ./grafana
+        volumes:
+            - type: bind
+              source: ./grafana/dashboards/
+              target: /dashboards
+            - type: volume
+              source: grafana.data
+              target: /var/lib/grafana
+            - type: volume
+              source: grafana.log
+              target: /var/log/grafana
+        ports:
+            - target: 3000
+              published: 3000
+              protocol: tcp
+
+    video-service:
+      network_mode: host
+      image: nhorro/mpeg-streamer-service
+      ports:
+        - "5000:5000/tcp"
+
+volumes:
+    elasticsearch.data:
+    elasticsearch.logs:
+    grafana.data:
+    grafana.log:
+    kibana.data:
+    influxdb.data:
+
+
